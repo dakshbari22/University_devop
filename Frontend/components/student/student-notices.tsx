@@ -1,4 +1,4 @@
-// "use client"
+"use client"
 
 // import { Bell, AlertTriangle, AlertCircle, Info } from "lucide-react"
 // import { useAuth } from "@/lib/auth-context"
