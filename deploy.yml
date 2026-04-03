@@ -1,0 +1,37 @@
+---
+- name: Configure EC2 and Deploy Web App
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Node.js and NPM (Adjust if using Python/Java)
+      apt:
+        name: 
+          - nodejs
+          - npm
+        state: present
+
+    - name: Create app directory
+      file:
+        path: /var/www/myapp
+        state: directory
+        owner: ubuntu
+
+    - name: Copy code from Jenkins workspace to AWS server
+      copy:
+        src: ./
+        dest: /var/www/myapp/
+
+    - name: Install app dependencies
+      command: npm install
+      args:
+        chdir: /var/www/myapp/
+
+    - name: Start the application
+      shell: nohup node index.js > app.log 2>&1 &
+      args:
+        chdir: /var/www/myapp/
