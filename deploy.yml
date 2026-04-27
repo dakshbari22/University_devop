@@ -28,19 +28,19 @@
     - name: Install Backend dependencies
       command: npm install
       args:
-        chdir: /var/www/myapp/backend/
+        chdir: /var/www/myapp/Backend/
 
     - name: Install Frontend dependencies
       command: npm install
       args:
-        chdir: /var/www/myapp/frontend/
+        chdir: /var/www/myapp/Frontend/
 
     - name: Start Backend server
       shell: nohup node index.js > backend.log 2>&1 &
       args:
-        chdir: /var/www/myapp/backend/
+        chdir: /var/www/myapp/Backend/
 
     - name: Start Frontend server
       shell: nohup npm start > frontend.log 2>&1 &
       args:
-        chdir: /var/www/myapp/frontend/
+        chdir: /var/www/myapp/Frontend/
