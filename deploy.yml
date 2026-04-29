@@ -41,6 +41,6 @@
         chdir: /var/www/myapp/Backend/
 
     - name: Start Frontend server
-      shell: nohup npm start > frontend.log 2>&1 &
+      shell: nohup env HOST=0.0.0.0 npm run dev > frontend.log 2>&1 &
       args:
         chdir: /var/www/myapp/Frontend/
